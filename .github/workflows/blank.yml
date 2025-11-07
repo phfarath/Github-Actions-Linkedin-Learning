@@ -37,6 +37,6 @@ jobs:
           
   deploy-dev:
     needs: build
-    uses: phfarath/Github-Actions-Linkedin-Learning_templates/.github/workflows/deploy-demo.yml@main
+    uses: phfarath/Github-Actions-Linkedin-Learning_templates/.github/workflows/demo-deploy.yml@main
     with:
       variavel-demo: "Demo dev"

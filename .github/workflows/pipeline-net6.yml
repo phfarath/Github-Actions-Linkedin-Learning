@@ -33,3 +33,15 @@ jobs:
       name: publish
       path: ./publish
     
+# incluindo job de deployment
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+    - name: Download a build artifact
+      uses: actions/download-artifact@v2
+      with:
+        name: publish
+        path: ./publish
+
+   

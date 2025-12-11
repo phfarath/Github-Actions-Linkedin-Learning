@@ -45,4 +45,16 @@ jobs:
         name: publish
         path: ./publish
 
-   
+    - name: 'Login via Azure CLI'
+      uses: azure/login@v1
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }} # é necessário a secret key com esse mesmo nome
+
+    - uses: azure/webapps-deploy@v2
+      with:
+        app-name: 'demolinkedin' # nome da aplicação na nuvem azure
+        package: ./publish
+
+# Após isso, a AZURE_CREDENTIALS precisa ser configurada, para isso abra o Azure Cloud Shell no projeto da azure e rode o comando:
+# az ad sp create-for-rbac --name "{sp-name}" --sdk-auth --role contributor --scopes /subscriptions/{subscription-id}/resourceGroups/{resource-group}/providers/Microsoft.Web/sites/{app-name}
+# Substituindo as variaveis, sua credential será liberada via shell

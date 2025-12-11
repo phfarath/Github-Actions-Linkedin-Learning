@@ -36,6 +36,7 @@ jobs:
 # incluindo job de deployment
   deploy:
     needs: build
+    environment: development
     runs-on: ubuntu-latest
     steps:
     - name: Download a build artifact
